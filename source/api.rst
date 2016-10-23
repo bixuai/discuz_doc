@@ -10,6 +10,8 @@ discuz为了防止恶意注册，注册form表单的name为随机生成的字符
 
 ::
 
+    source/function/cache/cache_setting.php 404行
+    
     $reginputbwords = array('username', 'password', 'password2', 'email');
 	
     if(in_array($data['reginput']['username'], $reginputbwords) || !preg_match('/^[A-z]\w+?$/', $data['reginput']['username'])) {

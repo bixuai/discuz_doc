@@ -1,0 +1,301 @@
+Searching 4178 files for "reginput" (regex, case sensitive)
+
+/data/appapi/code/data/log/201610_cplog.php:
+   53  <?PHP exit;?>	1477190787	admin	1	127.0.0.1	setting	GET={frames=yes; operation=sec; highlight=username; }; POST={};
+   54  <?PHP exit;?>	1477190787	admin	1	127.0.0.1	setting	GET={operation=sec; highlight=username; }; POST={};
+   55: <?PHP exit;?>	1477190817	admin	1	127.0.0.1	setting	GET={edit=yes; anchor=reginput; operation=sec; settingnew={floodctrl=15; reginput={username=username; password=password; password2=password2; email=email; }; }; settingsubmit=提交; }; POST={anchor=reginput; operation=sec; settingnew={floodctrl=15; reginput={username=username; password=password; password2=password2; email=email; }; }; settingsubmit=提交; };
+   56: <?PHP exit;?>	1477190819	admin	1	127.0.0.1	setting	GET={operation=sec; anchor=reginput; }; POST={};
+   57  <?PHP exit;?>	1477190821	admin	1	127.0.0.1	tools	GET={operation=updatecache; }; POST={};
+   58  <?PHP exit;?>	1477190822	admin	1	127.0.0.1	tools	GET={operation=updatecache; step=2; type={0=data; 1=tpl; }; confirmed=确定; }; POST={type={0=data; 1=tpl; }; confirmed=确定; };
+
+/data/appapi/code/source/admincp/admincp_setting.php:
+  113  		));
+  114  	} elseif($operation == 'sec') {
+  115: 		$_GET['anchor'] = in_array($_GET['anchor'], array('base', 'reginput', 'postperiodtime')) ? $_GET['anchor'] : 'base';
+  116  		showsubmenuanchors('setting_sec', array(
+  117  			array('setting_sec_base', 'base', $_GET['anchor'] == 'base'),
+  118: 			array('setting_sec_reginput', 'reginput', $_GET['anchor'] == 'reginput'),
+  119  			array('setting_sec_postperiodtime', 'postperiodtime', $_GET['anchor'] == 'postperiodtime'),
+  120  		));
+  ...
+ 1802  	} elseif($operation == 'sec') {
+ 1803  
+ 1804: 		$setting['reginput'] = dunserialize($setting['reginput']);
+ 1805  
+ 1806  		showtableheader('', '', 'id="base"'.($_GET['anchor'] != 'base' ? ' style="display: none"' : ''));
+ ....
+ 1811  		showtablefooter();
+ 1812  
+ 1813: 		showtagheader('div', 'reginput', $_GET['anchor'] == 'reginput');
+ 1814: 		showtableheader('setting_sec_reginput', 'nobottom');
+ 1815: 		showsetting('setting_sec_reginput_username', 'settingnew[reginput][username]', $setting['reginput']['username'], 'text');
+ 1816: 		showsetting('setting_sec_reginput_password', 'settingnew[reginput][password]', $setting['reginput']['password'], 'text');
+ 1817: 		showsetting('setting_sec_reginput_password2', 'settingnew[reginput][password2]', $setting['reginput']['password2'], 'text');
+ 1818: 		showsetting('setting_sec_reginput_email', 'settingnew[reginput][email]', $setting['reginput']['email'], 'text');
+ 1819  		showtablefooter();
+ 1820  		showtagfooter('div');
+ ....
+ 2904  
+ 2905  	} elseif($operation == 'sec') {
+ 2906: 		if(!preg_match('/^[A-z]\w+?$/', $settingnew['reginput']['username'])) {
+ 2907: 			$settingnew['reginput']['username'] =  'username';
+ 2908  		}
+ 2909: 		if(!preg_match('/^[A-z]\w+?$/', $settingnew['reginput']['password'])) {
+ 2910: 			$settingnew['reginput']['password'] =  'password';
+ 2911  		}
+ 2912: 		if(!preg_match('/^[A-z]\w+?$/', $settingnew['reginput']['password2'])) {
+ 2913: 			$settingnew['reginput']['password2'] =  'password2';
+ 2914  		}
+ 2915: 		if(!preg_match('/^[A-z]\w+?$/', $settingnew['reginput']['email'])) {
+ 2916: 			$settingnew['reginput']['email'] =  'email';
+ 2917  		}
+ 2918: 		foreach($settingnew['reginput'] as $key => $val) {
+ 2919: 			foreach($settingnew['reginput'] as $k => $v) {
+ 2920  				if($key == $k) continue;
+ 2921  				if($val == $v) {
+
+/data/appapi/code/source/class/class_member.php:
+  357  		global $_G;
+  358  
+  359: 		$_GET['username'] = trim($_GET[''.$this->setting['reginput']['username']]);
+  360: 		$_GET['password'] = $_GET[''.$this->setting['reginput']['password']];
+  361: 		$_GET['password2'] = $_GET[''.$this->setting['reginput']['password2']];
+  362: 		$_GET['email'] = $_GET[''.$this->setting['reginput']['email']];
+  363  
+  364  		if($_G['uid']) {
+
+/data/appapi/code/source/function/cache/cache_setting.php:
+   20  		'ipverifywhite', 'fastsmiley', 'defaultdoing', 'antitheftsetting',
+   21  		);
+   22: 	$serialized = array('reginput', 'memory', 'search', 'creditspolicy', 'ftp', 'secqaa', 'ec_credit', 'qihoo', 'spacedata',
+   23  		'infosidestatus', 'uc', 'indexhot', 'relatedtag', 'sitemessage', 'uchome', 'heatthread', 'recommendthread',
+   24  		'disallowfloat', 'allowviewuserthread', 'advtype', 'click', 'card', 'rewritestatus', 'rewriterule', 'privacy', 'focus',
+   ..
+  402  	}
+  403  
+  404: 	//$reginputbwords = array('username', 'password', 'password2', 'email');
+  405: 	$reginputbwords = array();
+  406: 	if(in_array($data['reginput']['username'], $reginputbwords) || !preg_match('/^[A-z]\w+?$/', $data['reginput']['username'])) {
+  407: 		$data['reginput']['username'] = random(6);
+  408  	}
+  409: 	if(in_array($data['reginput']['password'], $reginputbwords) || !preg_match('/^[A-z]\w+?$/', $data['reginput']['password'])) {
+  410: 		$data['reginput']['password'] = random(6);
+  411  	}
+  412: 	if(in_array($data['reginput']['password2'], $reginputbwords) || !preg_match('/^[A-z]\w+?$/', $data['reginput']['password2'])) {
+  413: 		$data['reginput']['password2'] = random(6);
+  414  	}
+  415: 	if(in_array($data['reginput']['email'], $reginputbwords) || !preg_match('/^[A-z]\w+?$/', $data['reginput']['email'])) {
+  416: 		$data['reginput']['email'] = random(6);
+  417  	}
+  418  
+
+/data/appapi/code/source/language/lang_admincp.php:
+ 2190  	'setting_sec_secqaa_comment' => '建议您设置 10 个以上验证问题及答案，验证问题越多，验证问答防止恶意注册或发布信息的效果越明显。问题支持 HTML 代码，答案长度不超过 50 字节',
+ 2191  
+ 2192: 	'setting_sec_reginput' => '注册表单名称设置',
+ 2193: 	'setting_sec_reginput_username' => '用户名表单设置',
+ 2194: 	'setting_sec_reginput_username_comment' => '默认为 username ，只能是字母和数字的组合，必须以字母开头。修改后的表单名会使得注册机更难发挥作用',
+ 2195: 	'setting_sec_reginput_password' => '密码表单设置',
+ 2196: 	'setting_sec_reginput_password_comment' => '默认为 password ，只能是字母和数字的组合，必须以字母开头。 修改后的表单名会使得注册机更难发挥作用',
+ 2197: 	'setting_sec_reginput_password2' => '重复密码表单设置',
+ 2198: 	'setting_sec_reginput_password2_comment' => '默认为 password2 ，只能是字母和数字的组合，必须以字母开头。 修改后的表单名会使得注册机更难发挥作用',
+ 2199: 	'setting_sec_reginput_email' => 'Email表单设置',
+ 2200: 	'setting_sec_reginput_email_comment' => '默认为 email ，只能是字母和数字的组合，必须以字母开头。 修改后的表单名会使得注册机更难发挥作用',
+ 2201  	'setting_sec_postperiodtime'=> '发帖时间段限制',
+ 2202  	'setting_sec_accountguard'=> '帐号保镖',
+
+/data/appapi/code/source/language/lang_admincp_searchindex.php:
+ 5413      array (
+ 5414        '防灌水设置' => 'action=setting&operation=sec',
+ 5415:       '注册表单名称设置' => 'action=setting&operation=sec&anchor=reginput',
+ 5416      ),
+ 5417      'text' =>
+ 5418      array (
+ 5419        0 => '防灌水设置 &raquo; 注册表单名称设置',
+ 5420:       1 => 'setting_sec_reginput',
+ 5421        2 => '注册表单名称设置',
+ 5422:       3 => 'setting_sec_reginput_username',
+ 5423        4 => '用户名表单设置',
+ 5424        5 => '默认为 username ，只能是字母和数字的组合，必须以字母开头。修改后的表单名会使得注册机更难发挥作用',
+ 5425:       6 => 'setting_sec_reginput_password',
+ 5426        7 => '密码表单设置',
+ 5427        8 => '默认为 password ，只能是字母和数字的组合，必须以字母开头。 修改后的表单名会使得注册机更难发挥作用',
+ 5428:       9 => 'setting_sec_reginput_password2',
+ 5429        10 => '重复密码表单设置',
+ 5430        11 => '默认为 password2 ，只能是字母和数字的组合，必须以字母开头。 修改后的表单名会使得注册机更难发挥作用',
+ 5431:       12 => 'setting_sec_reginput_email',
+ 5432        13 => 'Email表单设置',
+ 5433        14 => '默认为 email ，只能是字母和数字的组合，必须以字母开头。 修改后的表单名会使得注册机更难发挥作用',
+
+/data/appapi/code/source/plugin/mobile/template/mobile/register.htm:
+   67  		<li>
+   68  			<label><strong>{lang mobile:email}:</strong></label>
+   69: 			<input type="email" class="txt" name="{$_G['setting']['reginput']['email']}" />
+   70  		</li>
+   71          <li>
+   ..
+   89  		<li>
+   90  			<label><strong>{lang mobile:username}:</strong></label>
+   91: 			<input type="text" class="txt" name="{$_G['setting']['reginput']['username']}" />
+   92  		</li>
+   93  
+   ..
+   95  			<li>
+   96  				<label><strong>{lang mobile:password}:</strong></label>
+   97: 				<input type="password" class="txt" name="{$_G['setting']['reginput']['password']}" />
+   98  			</li>
+   99  			<li>
+  100  				<label><strong>{lang mobile:password_confirm}:</strong></label>
+  101: 				<input type="password" class="txt" name="{$_G['setting']['reginput']['password2']}" />
+  102  			</li>
+  103  		<!--{/if}-->
+  ...
+  105  		<li>
+  106  			<label><strong>{lang mobile:email}:</strong></label>
+  107: 			<input type="email" class="txt" name="{$_G['setting']['reginput']['email']}" />
+  108  		</li>
+  109  	<!--{/if}-->
+
+/data/appapi/code/source/plugin/mobile/template/register.htm:
+   67  		<li>
+   68  			<label><strong>{lang mobile:email}:</strong></label>
+   69: 			<input type="email" class="txt" name="{$_G['setting']['reginput']['email']}" />
+   70  		</li>
+   71          <li>
+   ..
+   89  		<li>
+   90  			<label><strong>{lang mobile:username}:</strong></label>
+   91: 			<input type="text" class="txt" name="{$_G['setting']['reginput']['username']}" />
+   92  		</li>
+   93  
+   ..
+   95  			<li>
+   96  				<label><strong>{lang mobile:password}:</strong></label>
+   97: 				<input type="password" class="txt" name="{$_G['setting']['reginput']['password']}" />
+   98  			</li>
+   99  			<li>
+  100  				<label><strong>{lang mobile:password_confirm}:</strong></label>
+  101: 				<input type="password" class="txt" name="{$_G['setting']['reginput']['password2']}" />
+  102  			</li>
+  103  		<!--{/if}-->
+  ...
+  105  		<li>
+  106  			<label><strong>{lang mobile:email}:</strong></label>
+  107: 			<input type="email" class="txt" name="{$_G['setting']['reginput']['email']}" />
+  108  		</li>
+  109  	<!--{/if}-->
+
+/data/appapi/code/source/plugin/qqconnect/template/module.htm:
+  643  		<!--{if $_G['setting']['regconnect']}-->
+  644  			$('reginfo_a').parentNode.className = '';
+  645: 			$('{$_G['setting']['reginput']['password']}').parentNode.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
+  646: 			$('{$_G['setting']['reginput']['username']}').outerHTML += '$js1';
+  647: 			$('{$_G['setting']['reginput']['password']}').required = 0;
+  648: 			$('{$_G['setting']['reginput']['password2']}').parentNode.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
+  649: 			$('{$_G['setting']['reginput']['password2']}').required = 0;
+  650  			$('main_hnav').outerHTML = '$js2';
+  651  			function connect_switch(op) {
+  ...
+  668  			}
+  669  			function connect_use_available(value) {
+  670: 				$('{$_G['setting']['reginput']['username']}').value = value;
+  671  				checkusername(value);
+  672  			}
+  ...
+  692  				var nick = s;
+  693  				if(nick) {
+  694: 					document.getElementById('{$_G['setting']['reginput']['username']}').value = nick;
+  695  				}
+  696  			});
+
+/data/appapi/code/template/default/member/register.htm:
+   59  							<table>
+   60  								<tr>
+   61: 									<th><span class="rq">*</span><label for="{$this->setting['reginput']['email']}">{lang email}:</label></th>
+   62  									<td>
+   63: 										<input type="text" id="{$this->setting['reginput']['email']}" name="$this->setting['reginput']['email']" autocomplete="off" size="25" tabindex="1" class="px" required /><br /><em id="emailmore">&nbsp;</em>
+   64  										<input type="hidden" name="handlekey" value="sendregister"/>
+   65  									</td>
+   66: 									<td class="tipcol"><i id="tip_{$this->setting['reginput']['email']}" class="p_tip">{lang register_email_tips}</i><kbd id="chk_{$this->setting['reginput']['email']}" class="p_chk"></kbd></td>
+   67  								</tr>
+   68  							</table>
+   ..
+  122  								<table>
+  123  									<tr>
+  124: 										<th><span class="rq">*</span><label for="{$this->setting['reginput']['username']}">{lang username}:</label></th>
+  125: 										<td><input type="text" id="{$this->setting['reginput']['username']}" name="" class="px" tabindex="1" value="{echo dhtmlspecialchars($_GET[defaultusername])}" autocomplete="off" size="25" maxlength="15" required /></td>
+  126: 										<td class="tipcol"><i id="tip_{$this->setting['reginput']['username']}" class="p_tip">{lang register_username_tips}</i><kbd id="chk_{$this->setting['reginput']['username']}" class="p_chk"></kbd></td>
+  127  									</tr>
+  128  								</table>
+  ...
+  132  								<table>
+  133  									<tr>
+  134: 										<th><span class="rq">*</span><label for="{$this->setting['reginput']['password']}">{lang password}:</label></th>
+  135: 										<td><input type="password" id="{$this->setting['reginput']['password']}" name="" size="25" tabindex="1" class="px" required /></td>
+  136: 										<td class="tipcol"><i id="tip_{$this->setting['reginput']['password']}" class="p_tip">{lang register_password_tips}<!--{if $_G['setting']['pwlength']}-->, {lang register_password_length_tips1} $_G['setting']['pwlength'] {lang register_password_length_tips2}<!--{/if}--></i><kbd id="chk_{$this->setting['reginput']['password']}" class="p_chk"></kbd></td>
+  137  									</tr>
+  138  								</table>
+  ...
+  142  								<table>
+  143  									<tr>
+  144: 										<th><span class="rq">*</span><label for="{$this->setting['reginput']['password2']}">{lang password_confirm}:</label></th>
+  145: 										<td><input type="password" id="{$this->setting['reginput']['password2']}" name="" size="25" tabindex="1" value="" class="px" required /></td>
+  146: 										<td class="tipcol"><i id="tip_{$this->setting['reginput']['password2']}" class="p_tip">{lang register_repassword_tips}</i><kbd id="chk_{$this->setting['reginput']['password2']}" class="p_chk"></kbd></td>
+  147  									</tr>
+  148  								</table>
+  ...
+  152  								<table>
+  153  									<tr>
+  154: 										<th><!--{if !$_G['setting']['forgeemail']}--><span class="rq">*</span><!--{/if}--><label for="{$this->setting['reginput']['email']}">{lang email}:</label></th>
+  155: 										<td><input type="text" id="{$this->setting['reginput']['email']}" name="" autocomplete="off" size="25" tabindex="1" class="px" value="$hash[0]" {if !$_G['setting']['forgeemail']}required{/if} /><br /><em id="emailmore">&nbsp;</em></td>
+  156: 										<td class="tipcol"><i id="tip_{$this->setting['reginput']['email']}" class="p_tip">{lang register_email_tips}</i><kbd id="chk_{$this->setting['reginput']['email']}" class="p_chk"></kbd></td>
+  157  									</tr>
+  158  								</table>
+  ...
+  278  <!--{if $this->showregisterform}-->
+  279  	<!--{if $sendurl}-->
+  280: 	addMailEvent($('{$this->setting['reginput']['email']}'));
+  281  	<!--{else}-->
+  282  	addFormEvent('registerform', <!--{if $_GET[action] != 'activation' && !($bbrules && $bbrulesforce) && !empty($invitecode)}-->1<!--{else}-->0<!--{/if}-->);
+
+/data/appapi/code/template/default/mobile/member/register.htm:
+   11  	<div class="bm_h">{$_G['setting']['reglinkname']}</div>
+   12  	<div class="bm_c">
+   13: 	<label><strong>{lang username}*</strong><input type="text" id="username" name="{$_G['setting']['reginput']['username']}" autocomplete="off" size="25" maxlength="15" value="" class="txt" /></label>
+   14  	<span class="xg1">{lang reg_username}</span><br />
+   15: 	<label><strong>{lang password}*</strong><input type="password" name="{$_G['setting']['reginput']['password']}" size="25" id="password" class="txt" /></label>
+   16: 	<label><strong>{lang password_confirm}*</strong><input type="password" name="{$_G['setting']['reginput']['password2']}" size="25" id="password2" value="" class="txt" /></label>
+   17: 	<label><strong>{lang email}*</strong><input type="text" name="{$_G['setting']['reginput']['email']}" autocomplete="off" size="25" id="email" class="txt" /> </label>
+   18  <!--{if empty($invite) && ($_G['setting']['regstatus'] == 2 || $_G['setting']['regstatus'] == 3)}-->
+   19  	<label><strong>{lang invite_code}<!--{if $_G['setting']['regstatus'] == 2 && !$invitestatus}-->*<!--{/if}--></strong><input type="text" name="invitecode" autocomplete="off" size="25" id="invitecode" class="txt" /></label>
+
+/data/appapi/code/template/default/touch/member/register.htm:
+   19  		<input type="hidden" name="agreebbrule" value="$bbrulehash" id="agreebbrule" checked="checked" />
+   20  		<ul>
+   21: 			<li><input type="text" tabindex="1" class="px p_fre" size="30" autocomplete="off" value="" name="{$_G['setting']['reginput']['username']}" placeholder="{lang registerinputtip}" fwin="login"></li>
+   22: 			<li><input type="password" tabindex="2" class="px p_fre" size="30" value="" name="{$_G['setting']['reginput']['password']}" placeholder="{lang login_password}" fwin="login"></li>
+   23: 			<li><input type="password" tabindex="3" class="px p_fre" size="30" value="" name="{$_G['setting']['reginput']['password2']}" placeholder="{lang registerpassword2}" fwin="login"></li>
+   24: 			<li class="bl_none"><input type="email" tabindex="4" class="px p_fre" size="30" autocomplete="off" value="" name="{$_G['setting']['reginput']['email']}" placeholder="{lang registeremail}" fwin="login"></li>
+   25  			<!--{if empty($invite) && ($_G['setting']['regstatus'] == 2 || $_G['setting']['regstatus'] == 3)}-->
+   26  				<li><input type="text" name="invitecode" autocomplete="off" tabindex="5" class="px p_fre" size="30" value="{lang invite_code}" placeholder="{lang invite_code}" fwin="login"></li>
+
+/data/appapi/code/template/default/wml/member/register.htm:
+    3  
+    4  	<input type="hidden" name="agreebbrule" value="$bbrulehash" id="agreebbrule" checked="checked" />
+    5: 	<p><strong>{lang username}*</strong><br/><input type="text" id="username" name="{$_G['setting']['reginput']['username']}" autocomplete="off" size="25" maxlength="15" value="" class="txt" /><small><br/><em class="xg1">{lang reg_username}</em></small></p>
+    6: 	<p><strong>{lang password}*</strong><br/><input type="password" name="{$_G['setting']['reginput']['password']}" size="25" id="password" class="txt" /></p>
+    7: 	<p><strong>{lang password_confirm}*</strong><br/><input type="password" name="{$_G['setting']['reginput']['password2']}" size="25" id="password2" value="" class="txt" /></p>
+    8: 	<p><strong>{lang email}*</strong><br/><input type="text" name="{$_G['setting']['reginput']['email']}" autocomplete="off" size="25" id="email" class="txt" /> </p>
+    9  <!--{if empty($invite) && ($_G['setting']['regstatus'] == 2 || $_G['setting']['regstatus'] == 3)}-->
+   10  	<p><strong>{lang invite_code}<!--{if $_G['setting']['regstatus'] == 2 && !$invitestatus}-->*<!--{/if}--></strong><br/><input type="text" name="invitecode" autocomplete="off" size="25" id="invitecode" class="txt" /></p>
+   ..
+   22  	<go method="post" href="member.php?mod={$_G[setting][regname]}&mobile=3">
+   23  	<postfield name="agreebbrule" value="$(agreebbrule)" />
+   24: 	<postfield name="{$_G['setting']['reginput']['username']}" value="$({$_G['setting']['reginput']['username']})" />
+   25: 	<postfield name="{$_G['setting']['reginput']['password']}" value="$({$_G['setting']['reginput']['password']})" />
+   26: 	<postfield name="{$_G['setting']['reginput']['password2']}" value="$({$_G['setting']['reginput']['password2']})" />
+   27: 	<postfield name="{$_G['setting']['reginput']['email']}" value="$({$_G['setting']['reginput']['email']})" />
+   28  	<!--{if empty($invite) && ($_G['setting']['regstatus'] == 2 || $_G['setting']['regstatus'] == 3)}-->
+   29  		<postfield name="invitecode" value="$(invitecode)" />
+
+133 matches across 13 files
