@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Discuz! X3 &#8212; phpunix 1 文档</title>
+    <title>性能优化 &#8212; phpunix 1 文档</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,7 +26,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="性能优化" href="performance.html" />
+    <link rel="next" title="安全措施" href="safe.html" />
+    <link rel="prev" title="Discuz! X3" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -42,38 +43,25 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="discuz-x3">
-<h1>Discuz! X3<a class="headerlink" href="#discuz-x3" title="永久链接至标题">¶</a></h1>
-<div class="toctree-wrapper compound" id="id1">
-<p class="caption"><span class="caption-text">内容:</span><a class="headerlink" href="#id1" title="永久链接至目录树">¶</a></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="performance.html">性能优化</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="performance.html#id2">分库分表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html#id3">动静分离</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html#id4">静态化</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html#id5">缓存优化</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html#xhprof">xhprof分析</a></li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html#id6">前端性能优化</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="safe.html">安全措施</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="safe.html#id2">前后台分离</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safe.html#id3">安全审计</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safe.html#fortify">fortify扫描</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safe.html#appscan">appscan扫描</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safe.html#id4">安全渗透</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safe.html#id5">安全红线</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">开放接口API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id1">注册</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">常见问题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#id2">密码错误次数过多，请 15 分钟后重新登录</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="id1">
+<h1>性能优化<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>分库分表<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>动静分离<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>静态化<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>缓存优化<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="xhprof">
+<h2>xhprof分析<a class="headerlink" href="#xhprof" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id6">
+<h2>前端性能优化<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 </div>
 </div>
 
@@ -82,18 +70,32 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">內容目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">性能优化</a><ul>
+<li><a class="reference internal" href="#id2">分库分表</a></li>
+<li><a class="reference internal" href="#id3">动静分离</a></li>
+<li><a class="reference internal" href="#id4">静态化</a></li>
+<li><a class="reference internal" href="#id5">缓存优化</a></li>
+<li><a class="reference internal" href="#xhprof">xhprof分析</a></li>
+<li><a class="reference internal" href="#id6">前端性能优化</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="performance.html" title="下一章">性能优化</a></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="上一章">Discuz! X3</a></li>
+      <li>Next: <a href="safe.html" title="下一章">安全措施</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>本页</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
+      <li><a href="_sources/performance.rst.txt"
             rel="nofollow">显示源代码</a></li>
     </ul>
    </div>
@@ -119,7 +121,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/index.rst.txt"
+      <a href="_sources/performance.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

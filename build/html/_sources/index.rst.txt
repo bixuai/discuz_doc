@@ -10,5 +10,8 @@ Discuz! X3
    :maxdepth: 2
    :caption: 内容:
 
+   performance
+   safe
    api
    faq
+
