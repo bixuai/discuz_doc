@@ -10,6 +10,7 @@ Discuz! X3
    :maxdepth: 2
    :caption: 内容:
 
+   database
    performance
    safe
    api
