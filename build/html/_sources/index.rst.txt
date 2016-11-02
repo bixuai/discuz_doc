@@ -10,7 +10,10 @@ Discuz! X3
    :maxdepth: 2
    :caption: 内容:
 
+   g
+   functions/index
    database
+   commonfunction
    performance
    safe
    api
