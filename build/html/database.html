@@ -26,8 +26,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="性能优化" href="performance.html" />
-    <link rel="prev" title="Discuz! X3" href="index.html" />
+    <link rel="next" title="常见函数" href="commonfunction.html" />
+    <link rel="prev" title="群组相关函数" href="functions/group.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -25199,10 +25199,18 @@
 </td>
 <td>备注</td>
 </tr>
+<tr class="row-odd"><td>dateline</td>
+<td>int(10) unsigned</td>
+<td>0</td>
+<td>NO</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>操作时间</td>
+</tr>
 </tbody>
 </table>
-<p>dateline                                                       int(10) unsigned                                                    0                                                    NO                                                   -                                                          操作时间
-=================================================      =================================================      =================================================      =================================================      =================================================      =================================================</p>
 <p>pre_home_blacklist 屏蔽黑名单表</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -27421,12 +27429,38 @@
 </td>
 <td>用户备注</td>
 </tr>
+<tr class="row-odd"><td>status</td>
+<td>tinyint(1)</td>
+<td>0</td>
+<td>NO</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0:正常 1:特殊关注 -1:不能再关注此人</td>
+</tr>
+<tr class="row-even"><td>mutual</td>
+<td>tinyint(1)</td>
+<td>0</td>
+<td>NO</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0:单向 1:已互相关注</td>
+</tr>
+<tr class="row-odd"><td>dateline</td>
+<td>int(10) unsigned</td>
+<td>0</td>
+<td>NO</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
 </tbody>
 </table>
-<p>status                                                       tinyint(1)                                                    0                                                    NO                                                   -                                                          0:正常 1:特殊关注 -1:不能再关注此人
-mutual                                                       tinyint(1)                                                    0                                                    NO                                                   -                                                          0:单向 1:已互相关注
-dateline                                                       int(10) unsigned                                                    0                                                    NO                                                   -
-=================================================      =================================================      =================================================      =================================================      =================================================      =================================================</p>
 <p>pre_home_follow_feed 被关注者事件表</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -31313,8 +31347,8 @@ dateline                                                       int(10) unsigned 
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="上一章">Discuz! X3</a></li>
-      <li>Next: <a href="performance.html" title="下一章">性能优化</a></li>
+      <li>Previous: <a href="functions/group.html" title="上一章">群组相关函数</a></li>
+      <li>Next: <a href="commonfunction.html" title="下一章">常见函数</a></li>
   </ul></li>
 </ul>
 </div>

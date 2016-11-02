@@ -8,4 +8,5 @@
 ··············    ····························· ··········································    ·················································    ···························
 getuserbyuid       获取用户基本信息                  source/function/function_core.php                  common_member、common_member_archive
 space_merge        获取用户相关信息并合并             source/function/function_core.php                  common_member前缀
+avatar             获取用户头像                     source/function/function_core.php                 无                                               返回uc_server/avatar.php?uid=1&size=middle
 ==============    ============================= ==========================================    =================================================    ===========================
