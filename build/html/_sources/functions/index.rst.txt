@@ -8,3 +8,4 @@ Discuz! X3常用函数
    forum
    thread
    group
+   bg
